@@ -3,14 +3,17 @@ Markdown with FileSystem it's a simple way to write many files with a single fil
 
 ```
 
+# file.html
 ՝՝՝html
 <div>text</div>
 ՝՝՝
 
+# file.jade
 ՝՝՝jade
 div text
 ՝՝՝
 
+# file.js
 ՝՝՝javascript
 var e=document.createElement('div');
 e.textContent = 'text';
@@ -23,7 +26,7 @@ install:
 npm install mdfs
 
 #usage
-## direct parsing
+## mdfs.parse
 
 ```javascript
 var mdfs=require('mdfs');
@@ -32,17 +35,17 @@ var test=mdfs.parse(mdcontent);
 This code will return
 ```javascript
 test = {
-  html: '<div>text</div>'
-  jade: 'div\n  text'
-  javascript: "var e=document.createElement('div');\ne.textContent = 'text';"
+  'file.html': '<div>text</div>'
+  'file.jade': 'div\n  text'
+  'file.js': "var e=document.createElement('div');\ne.textContent = 'text';"
 ```
 
-## automatic tests
+## mdfs.search 
 
 ```javascript
 var mdfs=require('mdfs');
 declare('My transpiler test', function(){
-  mdfs.declare_bdd_tests('tests/cases', function callback_function(test){
+  mdfs.search('tests/cases', function callback_function(test){
     if (test.pending)
       xit(test.title);
     else {
@@ -59,10 +62,29 @@ declare('My transpiler test', function(){
 This code will:
 * Search all md files (*.md) in tests/cases folder
 * Parse each one 
-* Invoke callback_function for each parsed file 
+* Invoke callback_function for each parsed file. The callback parameter contains parsed file return plus mdfs attribute.
 
-### Special attributes
-* filename: name of parsed file
+### mdfs attribute
+* fullname: name of parsed file
 * title: the first header on file
 * only: true if exists an `**only**` line 
+* skip: true if exists an `**skip**` line 
 * pending: true if exists an `**pending**` line 
+
+## mdfs.describe
+
+```javascript
+var mdfs = require('..')
+
+mdfs.describe(__dirname + '/sample', 'EXPECTED_FILE_NAME',
+
+  function transform_callback(test) {
+    var ACTUAL = TRANSFORM_FUNCTION(test['ORIGIN_FILE_NAME']);
+    return ACTUAL
+  }
+
+)
+```
+
+This code will create (bdd style) tests that invoke transform_callback function for each file.
+See `test/sample.js` for a ES6 to ES5 transpile with using Babel.
