@@ -93,5 +93,5 @@ mdfs.describe(__dirname + '/sample', 'EXPECTED_FILE_NAME',
 )
 ```
 
-This code will create (bdd style) tests that invoke transform_callback function for each file.
+This code will create (bdd style) tests that invoke transform_callback function for each file. The special file name `throw` can be used for transformation failures.
 See `test/sample.js` for a ES6 to ES5 transpile with using Babel.

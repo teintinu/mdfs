@@ -6,7 +6,7 @@
   "scripts": {
     "mocha": "node node_modules/mocha/bin/mocha",
     "coverage": "NODE_ENV=test istanbul cover _mocha -- -u exports --reporter spec",
-    "test": "npm run mocha ; npm run istabul ; npm run standard"
+    "test": "npm run mocha ; npm run coverage ; standard"
   },
   "repository": {
     "type": "git",

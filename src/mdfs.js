@@ -1,5 +1,9 @@
 /* eslint-env node, mocha */
 
+/** parses an md text
+* @param {string} text md source file
+* @returns object with files on md text
+*/
 function parse_md (text) {
   var lines = text.split('\n')
   var ret = {mdfs: {}}
@@ -59,6 +63,10 @@ function parse_md (text) {
   return ret
 }
 
+/** search md files
+* @param {string} folder root folder to search
+* @param {function} callback function invoked for each file. The argument of callback contains parsed text and mdfs object like {fullname: string, file: string, subfolder: string, error: string, only: boolean, pending: boolean, skip: boolean}
+*/
 function search_tests (folder, callback) {
   var path = require('path')
   var fs = require('fs')
@@ -88,6 +96,10 @@ function search_tests (folder, callback) {
 
 }
 
+/** describe test for md files
+* @param {string} folder root folder to search
+* @param {function} callback function invoked for each file. The argument of callback contains parsed text and mdfs object like {fullname: string, file: string, subfolder: string, error: string, only: boolean, pending: boolean, skip: boolean} and special throw property
+*/
 function describe_tests (folder, expected, callback) {
   var expect = require('chai').expect
   describe(folder, function () {
