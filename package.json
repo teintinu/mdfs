@@ -1,6 +1,6 @@
 {
   "name": "mdfs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Markdown simple for System for Testing propose",
   "main": "src/mdfs.js",
   "scripts": {

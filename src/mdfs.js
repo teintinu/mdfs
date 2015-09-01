@@ -60,6 +60,7 @@ function parse_md (text) {
     }
   })
   if ((name || actual) && !ret.mdfs.error) ret.mdfs.error = 'Line ' + (lines.length - 1) + ': file declaration not has closed'
+  if (!ret.mdfs.title) ret.mdfs.title = ret.mdfs.subfolder + ret.mdfs.file
   return ret
 }
 
@@ -105,7 +106,7 @@ function describe_tests (folder, expected, callback) {
   var expect = require('chai').expect
   describe(folder, function () {
     search_tests(folder, function (test) {
-      it(test.mdfs.title || (test.mdfs.subfolder + test.mdfs.file), function () {
+      it(test.mdfs.title, function () {
         if (test['throw']) {
           expect(function () {
             callback(test)
