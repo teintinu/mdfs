@@ -1,4 +1,11 @@
 # mdfs
+[![Build](https://travis-ci.org/thr0w/mdfs.png)](https://travis-ci.org/thr0w/mdfs) [![Dependencies](https://david-dm.org/thr0w/mdfs.svg)](https://david-dm.org/thr0w/mdfs) [![Coverage](https://img.shields.io/coveralls/thr0w/mdfs.svg)](https://coveralls.io/r/thr0w/mdfs?branch=master)
+[![Docs](https://inch-ci.org/github/thr0w/mdfs.svg?branch=master)](https://inch-ci.org/github/thr0w/mdfs/branch/master)
+
+[![NPM](https://nodei.co/npm/mdfs.png?downloads=true)](https://nodei.co/npm/mdfs/)
+
+> still working, carefull in production enviroments
+
 Markdown with FileSystem it's a simple way to write many files with a single file, usefull for testcases, specially for transpilers. The main advantage of markdown it's sintax formatting for multiple languages, for example.
 
 ```
