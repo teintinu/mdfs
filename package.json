@@ -1,12 +1,13 @@
 {
   "name": "mdfs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Markdown simple for System for Testing propose",
   "main": "src/mdfs.js",
   "scripts": {
     "mocha": "node node_modules/mocha/bin/mocha",
     "coverage": "NODE_ENV=test istanbul cover _mocha -- -u exports --reporter spec",
-    "test": "npm run mocha ; npm run coverage ; standard"
+    "test": "npm run mocha ; npm run coverage ; standard",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "babel": "^5.8.23",
     "blanket": "^1.1.7",
     "chai": "^3.2.0",
+    "coveralls": "^2.11.4",
     "istanbul": "^0.3.19",
     "mocha": "^2.3.0",
     "standard": "^5.1.1"

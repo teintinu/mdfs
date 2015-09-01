@@ -98,6 +98,7 @@ function search_tests (folder, callback) {
 
 /** describe test for md files
 * @param {string} folder root folder to search
+* @param {string} expected field for expected file name
 * @param {function} callback function invoked for each file. The argument of callback contains parsed text and mdfs object like {fullname: string, file: string, subfolder: string, error: string, only: boolean, pending: boolean, skip: boolean} and special throw property
 */
 function describe_tests (folder, expected, callback) {
