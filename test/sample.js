@@ -38,6 +38,12 @@ mdfs.describe(__dirname + '/sample', 'es5.js',
     return (test ? test.mdfs.title : folder) + ' (applying assertion function)'
   },
   function (actual, expected, test) {
-    if (actual.trim() !== (expected).trim()) throw new Error('unexpected result')
+    if (actual !== expected) {
+      var err = new Error('bad stuff')
+      err.expected = expected
+      err.actual = actual
+      err.showDiff = true
+      throw err
+    }
   }
 )
