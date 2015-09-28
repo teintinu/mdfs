@@ -4,8 +4,6 @@
 
 [![NPM](https://nodei.co/npm/mdfs.png?downloads=true)](https://nodei.co/npm/mdfs/)
 
-> still working, carefull in production enviroments
-
 Markdown with FileSystem it's a simple way to write many files with a single file, usefull for testcases, specially for transpilers. The main advantage of markdown it's sintax formatting for multiple languages, for example.
 
 ```
