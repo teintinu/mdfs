@@ -94,19 +94,20 @@ function search_tests (folder, callback) {
       }
     })
   }
-
 }
 
 /** describe test for md files
 * @param {string} folder root folder to search
 * @param {string} expected field for expected file name
 * @param {function} callback function invoked for each file. The argument of callback contains parsed text and mdfs object like {fullname: string, file: string, subfolder: string, error: string, only: boolean, pending: boolean, skip: boolean} and special throw property
+* @param {title_fn} callback function invoked to get title of each test
+* @param {assertion_fn} callback function invoked to assert actual against expected
 */
-function describe_tests (folder, expected, callback) {
+function describe_tests (folder, expected, callback, title_fn, assertion_fn) {
   var expect = require('chai').expect
-  describe(folder, function () {
+  describe(title_fn ? title_fn(null, folder) : folder, function () {
     search_tests(folder, function (test) {
-      it(test.mdfs.title, function () {
+      it(title_fn ? title_fn(test, folder) : test.mdfs.title, function () {
         if (test['throw']) {
           expect(function () {
             callback(test)
@@ -114,7 +115,8 @@ function describe_tests (folder, expected, callback) {
         } else {
           var actual_value = callback(test)
           var expected_value = test[expected]
-          expect(actual_value).to.be.equal(expected_value)
+          if (assertion_fn) assertion_fn(actual_value, expected_value, test)
+          else expect(actual_value).to.be.equal(expected_value)
         }
       })
     })

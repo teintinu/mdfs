@@ -75,5 +75,4 @@ function md_cases () {
       expect(test.mdfs[flag]).to.be.true
     }
   }
-
 }
