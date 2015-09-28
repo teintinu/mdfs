@@ -81,12 +81,12 @@ This code will:
 ## mdfs.describe
 
 ```javascript
-var mdfs = require('..')
+var mdfs = require('mdfs')
 
-mdfs.describe(__dirname + '/sample', 'EXPECTED_FILE_NAME',
+mdfs.describe(dirname, 'EXPECTED_FILE_NAME',
 
   function transform_callback(test) {
-    var ACTUAL = TRANSFORM_FUNCTION(test['ORIGIN_FILE_NAME']);
+    var ACTUAL = TRANSFORM_FUNCTION(test['SOURCE_FILE_NAME']);
     return ACTUAL
   }
 
