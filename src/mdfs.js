@@ -105,8 +105,10 @@ function search_tests (folder, callback) {
 */
 function describe_tests (folder, expected, callback, title_fn, assertion_fn) {
   var expect = require('chai').expect
+  var count = 0
   describe(title_fn ? title_fn(null, folder) : folder, function () {
     search_tests(folder, function (test) {
+      count++
       it(title_fn ? title_fn(test, folder) : test.mdfs.title, function () {
         if (test['throw']) {
           expect(function () {
@@ -121,6 +123,7 @@ function describe_tests (folder, expected, callback, title_fn, assertion_fn) {
       })
     })
   })
+  if (count === 0) throw new Error('no tests found in ' + folder)
 }
 
 module.exports.parse = parse_md

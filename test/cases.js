@@ -21,6 +21,11 @@ describe('mdfs parsing and searching', function () {
       expect(cases[casename], casename).to.be.equal('ok')
     })
   })
+  it('describe has no tests', function () {
+    expect(function () {
+      mdfs.describe(__dirname + '/not_exists', 'es5.js', function () {})
+    }).to.throw('no tests found in ' + __dirname + '/not_exists')
+  })
 })
 
 function md_cases () {
