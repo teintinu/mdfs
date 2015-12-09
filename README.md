@@ -68,7 +68,8 @@ This code will:
 * Search all md files (*.md) in tests/cases folder
 * Parse each one 
 * Invoke callback_function for each parsed file. The callback parameter contains parsed file return plus mdfs attribute.
-
+> test parameter of search callback has refresh method
+ 
 ### mdfs attribute
 * fullname: name of parsed file
 * title: the first header on file

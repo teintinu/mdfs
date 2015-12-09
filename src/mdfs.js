@@ -84,13 +84,19 @@ function search_tests (folder, callback) {
         return
       }
       if (stat.isFile() && path.extname(file) === '.md') {
-        var md = fs.readFileSync(fullname, 'utf8')
-        var test = parse_md(md)
+        var test;
+        refresh_md();
         test.mdfs.fullname = fullname
         test.mdfs.subfolder = subfolder
         test.mdfs.file = file
         callback(test)
         return
+        function refresh_md()
+        {
+          var md = fs.readFileSync(fullname, 'utf8')
+          test = parse_md(md)
+          test.refresh = refresh_md
+        }
       }
     })
   }
