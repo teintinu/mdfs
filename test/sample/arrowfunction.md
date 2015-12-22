@@ -13,3 +13,8 @@ var fn = function fn(a) {
   return a * 2;
 };
 ```
+
+# es5.map
+```
+arrowfunction.md
+```

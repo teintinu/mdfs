@@ -6,7 +6,7 @@
 */
 function parse_md (text) {
   var lines = text.split('\n')
-  var ret = {mdfs: {}}
+  var ret = { mdfs: {} }
   var name, actual
   var CODE_REGEX = /^\s*```/
   var TITLE_REGEX = /^\s*#+\s*(.*)$/
@@ -75,36 +75,36 @@ function search_tests (folder, callback) {
   search_in_dir('/')
 
   function search_in_dir (subfolder) {
+    var fullname
+    var test
     var files = fs.readdirSync(path.join(folder, subfolder))
     files.forEach(function (file) {
-      var fullname = path.join(folder, subfolder, file)
+      fullname = path.join(folder, subfolder, file)
       var stat = fs.statSync(folder + subfolder + file)
       if (stat.isDirectory()) {
         search_in_dir(subfolder + file + '/')
         return
       }
       if (stat.isFile() && path.extname(file) === '.md') {
-        var test;
-        refresh_md();
+        refresh_md()
         test.mdfs.fullname = fullname
         test.mdfs.subfolder = subfolder
         test.mdfs.file = file
         callback(test)
         return
-        function refresh_md()
-        {
-          var md = fs.readFileSync(fullname, 'utf8')
-          test = parse_md(md)
-          test.refresh = refresh_md
-        }
       }
     })
+    function refresh_md () {
+      var md = fs.readFileSync(fullname, 'utf8')
+      test = parse_md(md)
+      test.refresh = refresh_md
+    }
   }
 }
 
 /** describe test for md files
 * @param {string} folder root folder to search
-* @param {string} expected field for expected file name
+* @param {string} expected field (or fields) for expected file name
 * @param {function} callback function invoked for each file. The argument of callback contains parsed text and mdfs object like {fullname: string, file: string, subfolder: string, error: string, only: boolean, pending: boolean, skip: boolean} and special throw property
 * @param {title_fn} callback function invoked to get title of each test
 * @param {assertion_fn} callback function invoked to assert actual against expected
@@ -122,7 +122,15 @@ function describe_tests (folder, expected, callback, title_fn, assertion_fn) {
           }).to.throw(new RegExp(test['throw']))
         } else {
           var actual_value = callback(test)
-          var expected_value = test[expected]
+          var expected_value
+          if (Array.isArray(expected)) {
+            expected_value = {}
+            expected.forEach(function (i) {
+              expected_value[i] = test[i]
+            })
+          } else {
+            expected_value = test[expected]
+          }
           if (assertion_fn) assertion_fn(actual_value, expected_value, test)
           else expect(actual_value).to.be.equal(expected_value)
         }
