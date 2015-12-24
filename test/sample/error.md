@@ -1,16 +1,16 @@
 # Transpile error
 
-# es6.js
+## es6.js
 ```javascript
 var x=1);
 ```
 
-# throw
+## throw
 ```
 Unexpected token .1.7.
 ```
 
-# es5.map
+## es5.map
 ```
 error.md
 ```
