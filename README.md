@@ -31,6 +31,10 @@ e.textContent = 'text';
 ```bash
 $ npm install mdfs
 ```
+# usage:
+```javascript
+var mdfs = require('mdfs')
+```
 
 # api:
 ## mdfs.parse
