@@ -8,17 +8,17 @@ Markdown with FileSystem it's a simple way to write many files with a single fil
 
 ```
 
-# file.html
+## file.html
 ՝՝՝html
 <div>text</div>
 ՝՝՝
 
-# file.jade
+## file.jade
 ՝՝՝jade
 div text
 ՝՝՝
 
-# file.js
+## file.js
 ՝՝՝javascript
 var e=document.createElement('div');
 e.textContent = 'text';
