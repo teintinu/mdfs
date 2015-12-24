@@ -2,9 +2,9 @@
 [![Build](https://travis-ci.org/thr0w/mdfs.png)](https://travis-ci.org/thr0w/mdfs) [![Dependencies](https://david-dm.org/thr0w/mdfs.svg)](https://david-dm.org/thr0w/mdfs) [![Coverage](https://img.shields.io/coveralls/thr0w/mdfs.svg)](https://coveralls.io/r/thr0w/mdfs?branch=master)
 [![Docs](https://inch-ci.org/github/thr0w/mdfs.svg?branch=master)](https://inch-ci.org/github/thr0w/mdfs/branch/master)
 
-[![NPM](https://nodei.co/npm/mdfs.png?downloads=true)](https://nodei.co/npm/mdfs/)
+[![NPM](https://nodei.co/npm-dl/mdfs.png?months=1&height=1)](https://nodei.co/npm/mdfs/)
 
-Markdown with FileSystem it's a simple way to write many files with a single file, usefull for testcases, specially for transpilers. The main advantage of markdown it's sintax formatting for multiple languages, for example.
+Markdown with (Virtual)FileSystem it's a simple way to write many files with a single file, usefull for testcases, specially for transpilers. The main advantage of markdown it's sintax formatting for multiple languages, for example.
 
 ```
 
@@ -27,12 +27,12 @@ e.textContent = 'text';
 ```
 
 
-install:
+# install:
 npm install mdfs
 
-#usage
+# api
 ## mdfs.parse
-
+> parses an md file in a pure javascript object with each virtual file is mapped to a file
 ```javascript
 var mdfs=require('mdfs');
 var test=mdfs.parse(mdcontent);
@@ -46,7 +46,7 @@ test = {
 ```
 
 ## mdfs.search 
-
+> searchs *.md files in a directory, parses each one and invoke a callback with parsed object for each one.
 ```javascript
 var mdfs=require('mdfs');
 declare('My transpiler test', function(){
@@ -78,7 +78,7 @@ This code will:
 * pending: true if exists an `**pending**` line 
 
 ## mdfs.describe
-
+> create tests (describe/it/xit) for each *.md file on `dirname` and subfolders invoking the callback for make some transformation and return actual value witch will be compared with expected value on .md file. A second callback can be used to define to test title and the third callback can be used to compare actual and expected values.
 ```javascript
 var mdfs = require('mdfs')
 
