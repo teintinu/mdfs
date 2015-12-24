@@ -16,5 +16,16 @@ var fn = function fn(a) {
 
 ## es5.map
 ```
-no_title.md
+{
+    "version": 3,
+    "sources": [
+      "no_title.md"
+    ],
+    "names": [],
+    "mappings": ";;AAAA,IAAI,EAAE,GAAG,SAAL,EAAE,CAAI,CAAC;SAAG,CAAC,GAAC,CAAC;CAAA,CAAC",
+    "file": "no_title.md",
+    "sourcesContent": [
+        "var fn = (a)=>a*2;"
+    ]
+}
 ```

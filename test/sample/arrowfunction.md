@@ -16,5 +16,16 @@ var fn = function fn(a) {
 
 ## es5.map
 ```
-arrowfunction.md
+{
+  "file": "arrowfunction.md",
+  "mappings": ";;AAAA,IAAI,EAAE,GAAG,SAAL,EAAE,CAAI,CAAC;SAAG,CAAC,GAAC,CAAC;CAAA,CAAC",
+  "names": [],
+  "sources": [
+    "arrowfunction.md"
+  ],
+  "sourcesContent": [
+    "var fn = (a)=>a*2;"
+  ],
+  "version": 3
+}
 ```

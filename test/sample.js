@@ -1,5 +1,6 @@
 var mdfs = require('..')
 var babel = require('babel')
+var deepEqual  = require('deep-equal')
 
 mdfs.describe(__dirname + '/sample', 'es5.js',
 
@@ -49,14 +50,15 @@ mdfs.describe(__dirname + '/sample', 'es5.js',
 
 mdfs.describe(__dirname + '/sample', ['es5.js', 'es5.map'],
   function (test) {
-    console.dir(test)
     var es5 = babel.transform(test['es6.js'], {
       filename: test.mdfs.file,
-      compact: false
-    })
+      compact: false,
+      sourceMaps: true,
+      ast: false,
+    });
     return {
       'es5.js': es5.code,
-      'es5.map': test.mdfs.file
+      'es5.map': es5.map
     }
   },
   function (test, folder) {
@@ -64,13 +66,6 @@ mdfs.describe(__dirname + '/sample', ['es5.js', 'es5.map'],
   },
   function (actual, expected, test) {
     var err
-    if (JSON.stringify(actual) !== JSON.stringify(expected)) {
-      err = new Error('bad stuff')
-      err.expected = JSON.stringify(expected, null, 2)
-      err.actual = JSON.stringify(actual, null, 2)
-      err.showDiff = true
-      throw err
-    }
     if (actual['es5.js'] !== expected['es5.js']) {
       err = new Error('bad js stuff')
       err.expected = expected['es5.js']
@@ -78,11 +73,14 @@ mdfs.describe(__dirname + '/sample', ['es5.js', 'es5.map'],
       err.showDiff = true
       throw err
     }
-    if (actual['es5.map'] !== expected['es5.map']) {
-      err = new Error('bad map stuff')
-      err.expected = expected['es5.map']
-      err.actual = actual['es5.map']
+    var e=JSON.parse(expected['es5.map'])
+    var a=actual["es5.map"]
+    if (!deepEqual(e, a)) {
+      err = new Error('bad map stuff'+e+a+'x')
+      err.expected = e
+      err.actual = a
       err.showDiff = true
+      console.dir(err)
       throw err
     }
   }

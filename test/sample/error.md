@@ -9,8 +9,3 @@ var x=1);
 ```
 Unexpected token .1.7.
 ```
-
-## es5.map
-```
-error.md
-```
