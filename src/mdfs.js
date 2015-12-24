@@ -9,7 +9,7 @@ function parse_md (text) {
   var ret = { mdfs: {} }
   var name, actual
   var CODE_REGEX = /^\s*```/
-  var TITLE_REGEX = /^\s*#+\s*(.*)$/
+  var TITLE_REGEX = /^\s*(#+)\s*(.*)$/
   var ONLY_REGEX = /^\s*\*\*\s*only\s*\*\*\s*$/i
   var SKIP_REGEX = /^\s*\*\*\s*skip\s*\*\*\s*$/i
   var PENDING_REGEX = /^\s*\*\*\s*pending\s*\*\*\s*$/i
@@ -33,10 +33,13 @@ function parse_md (text) {
       if ((match = TITLE_REGEX.exec(line))) {
         if (ret.mdfs.title || CODE_REGEX.test(lines[idx + 1])) {
           if (name) return error('no content for ' + name)
-          name = match[1]
+          name = match[2]
           if (ret[name]) return error('duplicated name ' + name)
+          if (match[1].length !== 2) console.warn('expecting header 2 on line ' + line)
+        } else {
+          ret.mdfs.title = match[2]
+          if (match[1].length !== 1) console.warn('expecting header 1 on line ' + line)
         }
-        else ret.mdfs.title = match[1]
         return
       }
       if (ONLY_REGEX.test(line)) {

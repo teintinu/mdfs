@@ -1,10 +1,10 @@
 # duplicated name
 
-# a.txt
+## a.txt
 ```
 1
 ```
-# a.txt
+## a.txt
 ```
 2
 ```

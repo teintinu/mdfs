@@ -1,6 +1,6 @@
 {
   "name": "mdfs",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Markdown simple for System for Testing propose",
   "main": "src/mdfs.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "url": "https://github.com/thr0w/mdfs.git"
   },
   "author": "thr0w",
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/thr0w/mdfs/issues"
   },

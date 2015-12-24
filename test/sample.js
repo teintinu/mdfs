@@ -1,6 +1,6 @@
 var mdfs = require('..')
 var babel = require('babel')
-var deepEqual  = require('deep-equal')
+var deepEqual = require('deep-equal')
 
 mdfs.describe(__dirname + '/sample', 'es5.js',
 
@@ -54,8 +54,8 @@ mdfs.describe(__dirname + '/sample', ['es5.js', 'es5.map'],
       filename: test.mdfs.file,
       compact: false,
       sourceMaps: true,
-      ast: false,
-    });
+      ast: false
+    })
     return {
       'es5.js': es5.code,
       'es5.map': es5.map
@@ -73,10 +73,10 @@ mdfs.describe(__dirname + '/sample', ['es5.js', 'es5.map'],
       err.showDiff = true
       throw err
     }
-    var e=JSON.parse(expected['es5.map'])
-    var a=actual["es5.map"]
+    var e = JSON.parse(expected['es5.map'])
+    var a = actual['es5.map']
     if (!deepEqual(e, a)) {
-      err = new Error('bad map stuff'+e+a+'x')
+      err = new Error('bad map stuff')
       err.expected = e
       err.actual = a
       err.showDiff = true
