@@ -72,7 +72,7 @@ This code will:
 * Invoke callback_function for each parsed file. The callback parameter contains parsed file return plus mdfs attribute.
 > test parameter of search callback has refresh method
  
-##### mdfs attribute
+##### mdfs attributes:
 * fullname: name of parsed file
 * title: the first header on file
 * only: true if exists an `**only**` line 
