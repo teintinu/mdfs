@@ -28,7 +28,9 @@ e.textContent = 'text';
 
 
 # install:
-npm install mdfs
+```bash
+$ npm install mdfs
+```
 
 # api
 ## mdfs.parse
