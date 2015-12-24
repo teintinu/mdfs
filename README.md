@@ -32,7 +32,7 @@ e.textContent = 'text';
 $ npm install mdfs
 ```
 
-# api
+# api:
 ## mdfs.parse
 > parses an md file in a pure javascript object with each virtual file is mapped to a file
 ```javascript
@@ -72,7 +72,7 @@ This code will:
 * Invoke callback_function for each parsed file. The callback parameter contains parsed file return plus mdfs attribute.
 > test parameter of search callback has refresh method
  
-### mdfs attribute
+##### mdfs attribute
 * fullname: name of parsed file
 * title: the first header on file
 * only: true if exists an `**only**` line 
@@ -83,16 +83,12 @@ This code will:
 > create tests (describe/it/xit) for each *.md file on `dirname` and subfolders invoking the callback for make some transformation and return actual value witch will be compared with expected value on .md file. A second callback can be used to define to test title and the third callback can be used to compare actual and expected values.
 ```javascript
 var mdfs = require('mdfs')
-
 mdfs.describe(dirname, 'EXPECTED_FILE_NAME',
-
   function transform_callback(test) {
     var ACTUAL = TRANSFORM_FUNCTION(test['SOURCE_FILE_NAME']);
     return ACTUAL
   }
-
 )
 ```
-
 This code will create (bdd style) tests that invoke transform_callback function for each file. The special file name `throw` can be used for transformation failures.
 See `test/sample.js` for a ES6 to ES5 transpile with using Babel.
