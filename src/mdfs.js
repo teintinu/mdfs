@@ -123,7 +123,6 @@ function describe_tests (folder, expected, callback, title_fn, assertion_fn) {
             callback(test)
           }).toThrowError(new RegExp(test.files['throw']))
         } else {
-          debugger
           var actual_value = callback(test)
           var expected_value
           if (Array.isArray(expected)) {
