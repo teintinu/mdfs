@@ -52,32 +52,19 @@ mdfs.describe(__dirname + '/sample', ['es5.js', 'es5.map'],
   },
   function (actual, expected, test) {
     var err
-    if (actual['es5.js'] !== expected['es5.js']) {
-      err = new Error('bad js stuff')
-      err.expected = expected['es5.js']
-      err.actual = actual['es5.js']
-      err.showDiff = true
-      throw err
-    }
+    expect(actual['es5.js']).toEqual(expected['es5.js'])
     var e = JSON.parse(expected['es5.map'])
     var a = actual['es5.map']
-    if (!deepEqual(e, a)) {
-      err = new Error('bad map stuff')
-      err.expected = e
-      err.actual = a
-      err.showDiff = true
-      console.dir(err)
-      throw err
-    }
+    expect(a).toEqual(e)
   }
 )
 
 
 function transpile(test) {
-  var source = test['es6.js']
+  var source = test.files['es6.js']
   try {
     var out = ts.transpileModule(source, {
-      compilerOptions: { module: ts.ModuleKind.CommonJS, sourceMap: true}, 
+      compilerOptions: { module: ts.ModuleKind.CommonJS, sourceMap: true },
       reportDiagnostics: true,
     });
     if (out.diagnostics.length) throw new Error("transpile error")
@@ -92,6 +79,6 @@ function transpile(test) {
     }
   }
   catch (e) {
-    throw new Error("transpile error")
+    throw new Error("transpile error: " + e.message)
   }
 }

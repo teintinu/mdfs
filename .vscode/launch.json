@@ -6,15 +6,17 @@
     "configurations": [
         {
             "type": "node",
+            "name": "vscode-jest-tests",
             "request": "launch",
-            "name": "Mocha",
-            "runtimeArgs": [
-                "${workspaceRoot}/node_modules/.bin/mocha",
-                "--inspect-brk"                
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+            "args": [
+                "--runInBand",
+                "-t",
+                "erro_h2"
             ],
+            "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "port": 9229
+            "internalConsoleOptions": "neverOpen"
         }
     ]
 }

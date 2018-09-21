@@ -6,7 +6,7 @@
 */
 function parse_md (text) {
   var lines = text.split('\n')
-  var ret = { mdfs: {} }
+  var ret = { mdfs: {}, files: {} }
   var name, actual
   var CODE_REGEX = /^\s*```/
   var TITLE_REGEX = /^\s*(#+)\s*(.*)$/
@@ -17,7 +17,7 @@ function parse_md (text) {
     var match = CODE_REGEX.test(line)
     if (actual) {
       if (line === '```') {
-        ret[name] = actual.join('\n')
+        ret.files[name] = actual.join('\n')
         actual = null
         name = null
         return
@@ -34,11 +34,11 @@ function parse_md (text) {
         if (ret.mdfs.title || CODE_REGEX.test(lines[idx + 1])) {
           if (name) return error('no content for ' + name)
           name = match[2]
-          if (ret[name]) return error('duplicated name ' + name)
-          if (match[1].length !== 2) console.warn('expecting header 2 on line ' + line)
+          if (ret.files[name]) return error('duplicated name ' + name)
+          if (match[1].length !== 2) return error('expecting header 2 on line ' + line)
         } else {
           ret.mdfs.title = match[2]
-          if (match[1].length !== 1) console.warn('expecting header 1 on line ' + line)
+          if (match[1].length !== 1) return error('expecting header 1 on line ' + line)
         }
         return
       }
@@ -111,7 +111,6 @@ function search_tests (folder, callback) {
 * @param {assertion_fn} callback function invoked to assert actual against expected
 */
 function describe_tests (folder, expected, callback, title_fn, assertion_fn) {
-  var expect = require('chai').expect
   var count = 0
   var desc_title = title_fn ? title_fn(null, folder) : folder
   describe(desc_title.toString(), function () {
@@ -119,23 +118,24 @@ function describe_tests (folder, expected, callback, title_fn, assertion_fn) {
       count++
       var it_title=title_fn ? title_fn(test, folder) : test.mdfs.title
       it(it_title.toString(), function () {
-        if (test['throw']) {
+        if (test.files['throw']) {
           expect(function () {
             callback(test)
-          }).to.throw(new RegExp(test['throw']))
+          }).toThrowError(new RegExp(test.files['throw']))
         } else {
+          debugger
           var actual_value = callback(test)
           var expected_value
           if (Array.isArray(expected)) {
             expected_value = {}
             expected.forEach(function (i) {
-              expected_value[i] = test[i]
+              expected_value[i] = test.files[i]
             })
           } else {
-            expected_value = test[expected]
+            expected_value = test.files[expected]
           }
           if (assertion_fn) assertion_fn(actual_value, expected_value, test)
-          else expect(actual_value).to.be.equal(expected_value)
+          else expect(actual_value).toEqual(expected_value)
         }
       })
     })
