@@ -1,8 +1,9 @@
 {
   "name": "mdfs",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Markdown simple file system for Testing propose",
   "main": "src/mdfs.js",
+  "types": "src/mdfs.d.ts",
   "scripts": {
     "mocha": "node node_modules/mocha/bin/mocha",
     "coverage": "NODE_ENV=test istanbul cover _mocha -- -u exports --reporter spec",
