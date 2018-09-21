@@ -1,6 +1,6 @@
 {
   "name": "mdfs",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Markdown simple file system for Testing propose",
   "main": "src/mdfs.js",
   "types": "src/mdfs.d.ts",

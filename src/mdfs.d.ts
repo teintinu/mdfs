@@ -24,10 +24,18 @@ declare module 'mdfs' {
 
     export function describe<A>(
         folder: string,
-        expectedFileName: string | string[],
+        expectedFileName: string,
         transformCallback: (test: MdFsTest) => A,
         title_fn?: (test: MdFsTest, folder: string) => string,
-        assertion_fn?: (actual: A, expected: string | { [name: string]: string }, test: MdFsTest) => void,
+        assertion_fn?: (actual: A, expected: string, test: MdFsTest) => void,
+    ): void
+
+    export function describe<A>(
+        folder: string,
+        expectedFileName: string[],
+        transformCallback: (test: MdFsTest) => A,
+        title_fn?: (test: MdFsTest, folder: string) => string,
+        assertion_fn?: (actual: A, expected: { [name: string]: string }, test: MdFsTest) => void,
     ): void
 
 }
