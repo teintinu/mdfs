@@ -1,6 +1,5 @@
 var mdfs = require('..')
 var ts = require('typescript')
-var deepEqual = require('deep-equal')
 
 mdfs.describe(__dirname + '/sample', 'es5.js',
 
