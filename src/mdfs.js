@@ -63,7 +63,6 @@ function parse_md (text) {
   })
   if ((name || actual) && !ret.mdfs.error) ret.mdfs.error = 'Line ' + (lines.length - 1) + ': file declaration not has closed'
   if (!ret.mdfs.title) ret.mdfs.title = ret.mdfs.subfolder + ret.mdfs.file
-  console.log(JSON.stringify(ret,null,2))
   return ret
 }
 
