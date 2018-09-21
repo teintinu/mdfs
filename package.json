@@ -6,9 +6,9 @@
   "scripts": {
     "mocha": "node node_modules/mocha/bin/mocha",
     "coverage": "NODE_ENV=test istanbul cover _mocha -- -u exports --reporter spec",
-    "test": "npm run mocha ; npm run codecov",
-    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "codecov": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec && cat ./coverage/coverage.json | ./node_modules/codecov.io/bin/codecov.io.js"
+    "test": "jest",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "codecov": "cat ./coverage/coverage.json | ./node_modules/codecov.io/bin/codecov.io.js"
   },
   "repository": {
     "type": "git",
@@ -20,21 +20,18 @@
     "url": "https://github.com/thr0w/mdfs/issues"
   },
   "homepage": "https://github.com/thr0w/mdfs",
-  "tonicExampleFilename": "test/cases.js",
+  "tonicExampleFilename": "test/cases.test.js",
   "devDependencies": {
-    "@babel/plugin-transform-arrow-functions": "^7.0.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-stage-0": "^7.0.0",
-    "blanket": "^1.1.7",
     "chai": "^4.1.2",
     "codecov.io": "^0.1.6",
     "coveralls": "^3.0.2",
     "deep-equal": "^1.0.1",
-    "istanbul": "^0.4.5",
-    "mocha": "^5.2.0",
+    "jest": "^23.6.0",
     "typescript": "^3.0.3"
   },
   "dependencies": {
-    "babel-core": "^6.26.3"
+  },
+  "jest": {
+    "collectCoverage": true
   }
 }
