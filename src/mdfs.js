@@ -52,7 +52,6 @@ function parse_md (text) {
       }
       if (PENDING_REGEX.test(line)) {
         ret.mdfs.pending = true
-        return
       }
     }
     function error (msg) {
@@ -94,7 +93,6 @@ function search_tests (folder, callback) {
         test.mdfs.subfolder = subfolder
         test.mdfs.file = file
         callback(test)
-        return
       }
     })
     function refresh_md () {
@@ -115,10 +113,12 @@ function search_tests (folder, callback) {
 function describe_tests (folder, expected, callback, title_fn, assertion_fn) {
   var expect = require('chai').expect
   var count = 0
-  describe(title_fn ? title_fn(null, folder) : folder, function () {
+  var desc_title = title_fn ? title_fn(null, folder) : folder
+  describe(desc_title.toString(), function () {
     search_tests(folder, function (test) {
       count++
-      it(title_fn ? title_fn(test, folder) : test.mdfs.title, function () {
+      var it_title=title_fn ? title_fn(test, folder) : test.mdfs.title
+      it(it_title.toString(), function () {
         if (test['throw']) {
           expect(function () {
             callback(test)

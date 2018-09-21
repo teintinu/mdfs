@@ -2,10 +2,10 @@
 
 ## es6.js
 ```javascript
-var x=1);
+vat x=1;
 ```
 
 ## throw
 ```
-Unexpected token .1.7.
+transpile error
 ```

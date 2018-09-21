@@ -1,38 +1,29 @@
 var mdfs = require('..')
-var babel = require('babel')
+var ts = require('typescript')
 var deepEqual = require('deep-equal')
 
 mdfs.describe(__dirname + '/sample', 'es5.js',
 
   function (test) {
-    var es5 = babel.transform(test['es6.js'], {
-      filename: test.mdfs.file,
-      compact: false
-    })
-    return es5.code
+    var t = transpile(test)
+    return t.es5
   }
 )
 
 mdfs.describe(__dirname + '/sample', 'es5.js',
   function (test) {
-    var es5 = babel.transform(test['es6.js'], {
-      filename: test.mdfs.file,
-      compact: false
-    })
-    return es5.code
+    var t = transpile(test)
+    return t.es5
   },
   function (test, folder) {
-    return (test ? test.mdfs.title : folder) + ' (applying assertion function)'
+    return [(test ? test.mdfs.title : folder), ' (applying assertion function)'].join('')
   }
 )
 
 mdfs.describe(__dirname + '/sample', 'es5.js',
   function (test) {
-    var es5 = babel.transform(test['es6.js'], {
-      filename: test.mdfs.file,
-      compact: false
-    })
-    return es5.code
+    var t = transpile(test)
+    return t.es5
   },
   function (test, folder) {
     return (test ? test.mdfs.title : folder) + ' (applying assertion function)'
@@ -50,15 +41,10 @@ mdfs.describe(__dirname + '/sample', 'es5.js',
 
 mdfs.describe(__dirname + '/sample', ['es5.js', 'es5.map'],
   function (test) {
-    var es5 = babel.transform(test['es6.js'], {
-      filename: test.mdfs.file,
-      compact: false,
-      sourceMaps: true,
-      ast: false
-    })
+    var t = transpile(test)
     return {
-      'es5.js': es5.code,
-      'es5.map': es5.map
+      'es5.js': t.es5,
+      'es5.map': t.map
     }
   },
   function (test, folder) {
@@ -85,3 +71,27 @@ mdfs.describe(__dirname + '/sample', ['es5.js', 'es5.map'],
     }
   }
 )
+
+
+function transpile(test) {
+  var source = test['es6.js']
+  try {
+    var out = ts.transpileModule(source, {
+      compilerOptions: { module: ts.ModuleKind.CommonJS, sourceMap: true}, 
+      reportDiagnostics: true,
+    });
+    if (out.diagnostics.length) throw new Error("transpile error")
+    var map = JSON.parse(out.sourceMapText)
+    return {
+      es5: out.outputText.replace("//# sourceMappingURL=module.js.map", "").trim(),
+      map: {
+        version: map.version,
+        mappings: map.mappings,
+        file: test.mdfs.file,
+      }
+    }
+  }
+  catch (e) {
+    throw new Error("transpile error")
+  }
+}

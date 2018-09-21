@@ -11,7 +11,7 @@ describe('mdfs parsing and searching', function () {
   mdfs.search(root, function (test) {
     var fn = cases[test.mdfs.file]
     it(test.mdfs.file, function () {
-      expect(fn, 'test function').to.be.not.empty
+      expect(typeof fn, 'test function').to.be.equal('function')
       fn(test)
       cases[test.mdfs.file] = 'ok'
     })
@@ -36,8 +36,8 @@ function md_cases () {
       expect(test.mdfs.fullname).to.be.equal(root + '/' + test.mdfs.file)
 
       expect(test.mdfs.title).to.be.equal('this is a basic test')
-      expect(test.mdfs.only).to.be.empty
-      expect(test.mdfs.pending).to.be.empty
+      expect(typeof test.mdfs.only).to.be.equal('undefined')
+      expect(typeof test.mdfs.pending).to.be.equal('undefined')
 
       expect(test['1.html']).to.be.equal('<div>text</div>')
       expect(test['1.jade']).to.be.equal('div\n  text')
@@ -49,8 +49,8 @@ function md_cases () {
       expect(test.mdfs.fullname).to.be.equal(root + '/folder/' + test.mdfs.file)
 
       expect(test.mdfs.title).to.be.equal('this test is on subfolder')
-      expect(test.mdfs.only).to.be.empty
-      expect(test.mdfs.pending).to.be.empty
+      expect(typeof test.mdfs.only).to.be.equal('undefined')
+      expect(typeof test.mdfs.pending).to.be.equal('undefined')
 
       expect(test['1.html']).to.be.equal('<div>text</div>')
       expect(test['1.jade']).to.be.equal('div\n  text')
