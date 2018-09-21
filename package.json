@@ -29,8 +29,7 @@
     "jest": "^23.6.0",
     "typescript": "^3.0.3"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "jest": {
     "collectCoverage": true
   }
