@@ -1,0 +1,35 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "no-debugger": false,
+    "no-console": false,
+    "interface-name": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "variable-name": false,
+    "no-namespace": false,
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "curly": [
+      true,
+      "ignore-same-line"
+    ],
+    "space-before-function-paren": false,
+    "radix": false,
+    "quotemark": [
+      true,
+      "double",
+      "avoid-escape"            
+    ],
+    "await-promise": true,
+    "no-unused-variable": false
+  },
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts"
+    ]
+  }
+}

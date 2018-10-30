@@ -13,8 +13,8 @@ var fn = function (a) { return a * 2; };
 ## es5.map
 ```
 {
-  "version": 3,
+  "file": "arrowfunction.md",
   "mappings": "AAAA,IAAI,EAAE,GAAG,UAAC,CAAC,IAAG,OAAA,CAAC,GAAC,CAAC,EAAH,CAAG,CAAC",
-  "file": "arrowfunction.md"
+  "version": 3
 }
 ```

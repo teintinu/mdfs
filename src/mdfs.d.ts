@@ -1,4 +1,4 @@
-declare module 'mdfs' {
+//declare module 'mdfs' {
 
     export type MdFsTest = {
         mdfs: {
@@ -38,4 +38,4 @@ declare module 'mdfs' {
         assertion_fn?: (actual: A, expected: { [name: string]: string }, test: MdFsTest) => void,
     ): void
 
-}
+// }
