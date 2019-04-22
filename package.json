@@ -1,6 +1,6 @@
 {
   "name": "mdfs",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Markdown simple file system for Testing propose",
   "main": "src/mdfs.js",
   "types": "src/mdfs.d.ts",
@@ -23,14 +23,14 @@
   "homepage": "https://github.com/thr0w/mdfs",
   "tonicExampleFilename": "test/cases.test.js",
   "devDependencies": {
-    "@types/jest": "^23.3.8",
-    "@types/node": "^10.12.1",
-    "coveralls": "^3.0.2",
-    "jest": "^23.6.0",
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.13.6",
+    "coveralls": "^3.0.3",
+    "jest": "^24.7.1",
     "request": "^2.88.0",
-    "ts-jest": "^23.10.4",
-    "tslint": "^5.11.0",
-    "typescript": "^3.1.4"
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.4"
   },
   "jest": {
     "preset": "ts-jest",
