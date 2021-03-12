@@ -1,6 +1,6 @@
 {
   "name": "mdfs",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Markdown simple file system for Testing propose",
   "main": "src/mdfs.js",
   "types": "src/mdfs.d.ts",
@@ -28,7 +28,7 @@
     "coveralls": "^3.0.3",
     "jest": "^24.7.1",
     "request": "^2.88.0",
-    "ts-jest": "^24.0.2",
+    "ts-jest": "^26.5.3",
     "tslint": "^5.16.0",
     "typescript": "^3.4.4"
   },
