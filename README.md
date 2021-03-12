@@ -1,7 +1,5 @@
 # mdfs
 [![Build](https://travis-ci.org/teintinu/mdfs.svg?branch=master)](https://travis-ci.org/teintinu/mdfs) [![Coverage](https://img.shields.io/coveralls/teintinu/mdfs.svg)](https://coveralls.io/r/teintinu/mdfs?branch=master)
-[![Docs](https://inch-ci.org/github/teintinu/mdfs.svg?branch=master)](https://inch-ci.org/github/teintinu/mdfs?branch=master)
-
 [![NPM](https://nodei.co/npm-dl/mdfs.png?months=1&height=1)](https://nodei.co/npm/mdfs/)
 
 Markdown with (Virtual)FileSystem it's a simple way to write many files with a single file, usefull for testcases, specially for transpilers. The main advantage of markdown it's sintax formatting for multiple languages, for example.
