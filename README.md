@@ -1,6 +1,6 @@
 # mdfs
-[![Build](https://travis-ci.org/hoda5/mdfs.png)](https://travis-ci.org/hoda5/mdfs) [![Dependencies](https://david-dm.org/thr0w/mdfs/status.svg)](https://david-dm.org/thr0w/mdfs) [![Coverage](https://img.shields.io/coveralls/thr0w/mdfs.svg)](https://coveralls.io/r/thr0w/mdfs?branch=master)
-[![Docs](https://inch-ci.org/github/hoda5/mdfs.svg?branch=master)](https://inch-ci.org/github/hoda5/mdfs?branch=master)
+[![Build](https://travis-ci.org/teintinu/mdfs.png)](https://travis-ci.org/teintinu/mdfs) [![Dependencies](https://david-dm.org/teintinu/mdfs/status.svg)](https://david-dm.org/teintinu/mdfs) [![Coverage](https://img.shields.io/coveralls/teintinu/mdfs.svg)](https://coveralls.io/r/teintinu/mdfs?branch=master)
+[![Docs](https://inch-ci.org/github/teintinu/mdfs.svg?branch=master)](https://inch-ci.org/github/teintinu/mdfs?branch=master)
 
 [![NPM](https://nodei.co/npm-dl/mdfs.png?months=1&height=1)](https://nodei.co/npm/mdfs/)
 
